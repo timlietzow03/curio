@@ -563,4 +563,88 @@ export const CLIPS: Clip[] = [
       explain: 'In DNA, A always pairs with T.',
     },
   },
+  {
+    id: 'skin-barrier',
+    subject: 'Makeup & Beauty',
+    hue: 332,
+    title: 'Skin Barrier & Undertones',
+    channel: { name: 'Glow Lab GRWM', verified: true },
+    scenes: [
+      {
+        say: 'Your skin barrier is the outer layer that locks moisture in and keeps irritants out. It has a slightly acidic pH of around five.',
+        visual: { kind: 'points', items: ['Acid mantle: pH ~5.0', 'Locks in hydration', 'Blocks bacteria & irritants'] },
+      },
+      {
+        say: 'When choosing foundation or concealer, look at your undertone: warm has golden or olive hints, cool has pink or blue.',
+        visual: { kind: 'points', items: ['Warm: golden / peach', 'Cool: pink / rosy', 'Neutral: balanced mix'] },
+      },
+      {
+        say: 'Color theory fix: green primer cancels redness, while peach or orange cancels dark under-eye circles.',
+        visual: { kind: 'formula', main: 'Green ↔ Red · Peach ↔ Blue', sub: 'complementary color wheel' },
+      },
+    ],
+    quiz: {
+      q: 'Which color corrector cancels redness on the skin?',
+      options: ['Green', 'Purple', 'Blue'],
+      answer: 0,
+      explain: 'Green sits opposite red on the color wheel, so they neutralize each other.',
+    },
+  },
+  {
+    id: 'muscle-hypertrophy',
+    subject: 'Sport & Fitness',
+    hue: 152,
+    title: 'How Muscles Actually Grow',
+    channel: { name: 'Pro Rep Science', verified: true },
+    scenes: [
+      {
+        say: 'Lifting weights creates microscopic tension in your muscle fibers. This mechanical tension is the main signal for growth.',
+        visual: { kind: 'formula', main: 'Mechanical Tension → Growth', sub: 'progressive overload' },
+      },
+      {
+        say: 'Your muscles do not grow during the workout—they repair and grow thicker while you rest and sleep.',
+        visual: { kind: 'points', items: ['Workout: stimulus', 'Protein: building blocks', 'Sleep: actual muscle repair'] },
+      },
+      {
+        say: 'To keep progressing, gradually increase weight, reps or control over time. Coaches call this progressive overload.',
+        visual: { kind: 'points', items: ['More weight', 'More reps', 'Slower, cleaner form'] },
+      },
+    ],
+    quiz: {
+      q: 'When do your muscle fibers actually repair and grow?',
+      options: ['During rest and sleep', 'Only during the final rep', 'Before the workout'],
+      answer: 0,
+      explain: 'Training triggers the signal, but muscle protein synthesis rebuilds fibers during recovery.',
+    },
+  },
+  {
+    id: 'separation-powers',
+    subject: 'Politics & Society',
+    hue: 255,
+    title: 'Why No Leader Gets Total Power',
+    channel: { name: 'Civic Pod', verified: true },
+    scenes: [
+      {
+        say: 'In a democracy, state power is split into three branches so no single person or group can rule alone.',
+        visual: { kind: 'formula', main: '3 Branches of Power', sub: 'checks and balances' },
+      },
+      {
+        say: 'The legislature makes the laws, the executive carries them out, and the judiciary checks if laws are fair and constitutional.',
+        visual: {
+          kind: 'points',
+          items: ['Legislative: parliament makes laws', 'Executive: government applies laws', 'Judiciary: independent courts'],
+        },
+      },
+      {
+        say: 'Because each branch can limit the others, citizens are protected from abuse of power.',
+        visual: { kind: 'points', items: ['Mutual control', 'Independent judges', 'Protects basic rights'] },
+      },
+    ],
+    quiz: {
+      q: 'Which branch of government is responsible for passing laws?',
+      options: ['The legislature (parliament)', 'The judiciary (courts)', 'The central bank'],
+      answer: 0,
+      explain: 'Parliaments form the legislative branch and debate and pass laws.',
+    },
+  },
 ];

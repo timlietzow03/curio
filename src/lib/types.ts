@@ -1,4 +1,5 @@
 export type VibeMode = 'stickman' | 'makeup' | 'sport' | 'podcast';
+export type VibeSetting = 'auto' | VibeMode;
 
 export type Visual =
   | { kind: 'formula'; main: string; sub?: string }

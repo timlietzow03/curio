@@ -2,7 +2,12 @@ import { CLIPS } from '@/data/clips';
 import type { Clip } from './types';
 import { shuffle } from './util';
 
-export const SUBJECTS = Array.from(new Set(CLIPS.map((c) => c.subject)));
+const FEATURED = ['Makeup & Beauty', 'Sport & Fitness', 'Politics & Society'];
+const ALL_SUBJECTS = Array.from(new Set(CLIPS.map((c) => c.subject)));
+export const SUBJECTS = [
+  ...FEATURED.filter((s) => ALL_SUBJECTS.includes(s)),
+  ...ALL_SUBJECTS.filter((s) => !FEATURED.includes(s)),
+];
 
 type Args = { topics: string[]; missed: string[]; seen: string[]; size: number };
 

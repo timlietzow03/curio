@@ -187,18 +187,17 @@ h1, h2, h3, p, ul, ol { margin: 0; }
 
 /* start screen */
 .gate {
-  position: absolute; z-index: 10; inset: 0; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px;
+  position: absolute; z-index: 10; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 12px;
   overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
-  padding: 20px 22px 24px; background: linear-gradient(180deg, rgba(10, 16, 27, 0.86), rgba(10, 16, 27, 0.98)); color: var(--v-ink);
+  padding: 24px; background: linear-gradient(180deg, rgba(10, 16, 27, 0.86), rgba(10, 16, 27, 0.98)); color: var(--v-ink);
 }
 .gate > * { flex: none; }
 .gatebrand { display: flex; align-items: center; gap: 10px; margin-bottom: 2px; font: 500 22px var(--font-mono), monospace; letter-spacing: 0.05em; color: var(--v-ink); }
-.gate h1 { font: 600 clamp(26px, 6.5vw, 36px)/1.08 var(--font-display), Georgia, serif; text-wrap: balance; }
-.gate p { color: var(--v-muted); font-size: 14px; line-height: 1.35; }
+.gate h1 { font: 600 clamp(28px, 7vw, 38px)/1.08 var(--font-display), Georgia, serif; text-wrap: balance; }
+.gate p { color: var(--v-muted); font-size: 15px; line-height: 1.4; }
 .gate .eyebrow { color: var(--v-accent); }
 .gate-actions {
-  position: sticky; bottom: 0; width: 100%; display: grid; gap: 6px; margin-top: auto; padding-top: 10px;
-  background: linear-gradient(180deg, rgba(10, 16, 27, 0), rgba(10, 16, 27, 0.98) 28%);
+  width: 100%; display: grid; gap: 8px; margin-top: 8px;
 }
 .tag.review { background: var(--v-accent); color: #0a101b; }
 
@@ -208,6 +207,7 @@ h1, h2, h3, p, ul, ol { margin: 0; }
   height: 32px; padding: 0 12px; border-radius: 16px; border: 1px solid var(--line); background: var(--raised);
   font: 500 12.5px var(--font-body), sans-serif;
 }
+.topic-vibe { font-weight: 400; opacity: 0.78; font-size: 11px; }
 .topic[aria-pressed='true'] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 .gate .topic { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2); color: var(--v-ink); }
 .gate .topic[aria-pressed='true'] { background: var(--v-accent); border-color: var(--v-accent); color: #0a101b; }

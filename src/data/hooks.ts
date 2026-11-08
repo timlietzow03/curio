@@ -1,11 +1,52 @@
-import type { Clip, Scene, VibeMode } from '@/lib/types';
+import type { Clip, Scene, VibeMode, VibeSetting } from '@/lib/types';
 
-export const VIBES: { id: VibeMode; label: string; badge: string; desc: string }[] = [
-  { id: 'stickman', label: 'Stickman', badge: '✏️ Stickman Hook', desc: 'Punchy hook + talking stickman explainer' },
-  { id: 'makeup', label: 'Makeup GRWM', badge: '💄 GRWM Storytime', desc: 'Get-Ready-With-Me vlog hook & gossip vibe' },
-  { id: 'sport', label: 'Sport Focus', badge: '🏋️ Gym & Sport', desc: 'High-energy athlete & workout hook' },
-  { id: 'podcast', label: 'Podcast / Vlog', badge: '🎙️ Late-Night Pod', desc: 'Deep-talk podcast & creator vlog hook' },
+export const VIBE_OPTIONS: { id: VibeSetting; label: string; badge: string; desc: string }[] = [
+  { id: 'auto', label: 'Match Topic', badge: '✨ Auto (Match Topic)', desc: 'Automatically matches the video & hook style to each lesson’s topic' },
+  { id: 'makeup', label: 'Makeup GRWM', badge: '💄 Makeup GRWM', desc: 'Get-Ready-With-Me vlog aesthetic & storytime hook' },
+  { id: 'sport', label: 'Sport Focus', badge: '🏋️ Sport Focus', desc: 'High-energy athlete & workout hook' },
+  { id: 'podcast', label: 'Podcast / Vlog', badge: '🎙️ Podcast / Vlog', desc: 'Late-night podcast & creator vlog hook' },
+  { id: 'stickman', label: 'Stickman', badge: '✏️ Stickman', desc: 'Punchy hook + talking stickman chalkboard explainer' },
 ];
+
+export const VIBES = VIBE_OPTIONS.filter((v): v is { id: VibeMode; label: string; badge: string; desc: string } => v.id !== 'auto');
+
+/** Maps each subject / topic to its matching video style & hook format. */
+export const SUBJECT_VIBE: Record<string, VibeMode> = {
+  // Video vibe topics
+  'Makeup & Beauty': 'makeup',
+  'Sport & Fitness': 'sport',
+  'Politics & Society': 'podcast',
+  // Classic subjects mapped to their best-fitting video aesthetic
+  Chemistry: 'makeup',
+  Biology: 'makeup',
+  Physics: 'sport',
+  Geography: 'sport',
+  History: 'podcast',
+  Economics: 'podcast',
+  English: 'podcast',
+  Math: 'stickman',
+  'Computer Science': 'stickman',
+};
+
+export const SUBJECT_META: Record<string, { icon: string; vibeLabel: string }> = {
+  'Makeup & Beauty': { icon: '💄', vibeLabel: 'GRWM Vlog' },
+  'Sport & Fitness': { icon: '🏋️', vibeLabel: 'Sport Focus' },
+  'Politics & Society': { icon: '🎙️', vibeLabel: 'Podcast' },
+  Chemistry: { icon: '🧪', vibeLabel: 'GRWM Lab' },
+  Biology: { icon: '🧬', vibeLabel: 'GRWM Bio' },
+  Physics: { icon: '⚡', vibeLabel: 'Sport Physics' },
+  Geography: { icon: '🌍', vibeLabel: 'Action Geo' },
+  History: { icon: '🏛️', vibeLabel: 'Story Pod' },
+  Economics: { icon: '📈', vibeLabel: 'Money Pod' },
+  English: { icon: '💬', vibeLabel: 'Creator Vlog' },
+  Math: { icon: '📐', vibeLabel: 'Stickman' },
+  'Computer Science': { icon: '💻', vibeLabel: 'Stickman' },
+};
+
+export function resolveVibeForClip(clip: Clip, setting: VibeSetting): VibeMode {
+  if (setting !== 'auto') return setting;
+  return SUBJECT_VIBE[clip.subject] ?? 'stickman';
+}
 
 type HookMap = Record<string, Record<VibeMode, { say: string; headline: string }>>;
 
@@ -368,6 +409,60 @@ export const CLIP_HOOKS: HookMap = {
     podcast: {
       say: 'Four chemical bases—A, T, G and C—pair up like a zipper to store billions of years of evolution.',
       headline: 'Ep. 20 · The Double Helix Code',
+    },
+  },
+  'skin-barrier': {
+    stickman: {
+      say: 'Why does your concealer look patchy even with expensive products? Meet your skin barrier and color wheel.',
+      headline: 'The Science of Flawless Skin',
+    },
+    makeup: {
+      say: 'Wait—before I blend this concealer, let me show you the color wheel trick that deletes redness in two seconds.',
+      headline: 'GRWM · Color Theory & Skin Barrier',
+    },
+    sport: {
+      say: 'Sweat, sun and harsh wash can strip your skin’s acid shield—here is how your outer barrier protects you.',
+      headline: 'Protecting Your Skin Shield',
+    },
+    podcast: {
+      say: 'Why is the beauty industry obsessed with pH 5 and color theory? Because chemistry decides how makeup sits.',
+      headline: 'Ep. 21 · Chemistry of Beauty',
+    },
+  },
+  'muscle-hypertrophy': {
+    stickman: {
+      say: 'Plot twist: your muscles actually shrink in the gym and only grow when you are asleep in bed.',
+      headline: 'Muscles Grow While You Sleep',
+    },
+    makeup: {
+      say: 'Post-pilates GRWM—did you know your muscles don’t actually tone during the workout, but while you sleep?',
+      headline: 'GRWM · Beauty Sleep & Recovery',
+    },
+    sport: {
+      say: 'Every heavy rep sends a mechanical signal to your fibers—here is what actually triggers muscle hypertrophy.',
+      headline: 'The Science of Muscle Growth',
+    },
+    podcast: {
+      say: 'Training breaks muscle down; recovery builds it back thicker. Let’s unpack progressive overload in 60 seconds.',
+      headline: 'Ep. 22 · Stimulus vs. Recovery',
+    },
+  },
+  'separation-powers': {
+    stickman: {
+      say: 'How do you stop a president or prime minister from making up their own rules? Split the power into three.',
+      headline: 'The 3-Way Power Split',
+    },
+    makeup: {
+      say: 'Quick politics tea while I do my lip combo: why can a court block a law that parliament just passed?',
+      headline: 'GRWM · Checks & Balances Tea',
+    },
+    sport: {
+      say: 'Imagine a match where the striker is also the referee and writes the rulebook—that is why democracies split power.',
+      headline: 'Why Players Aren’t Referees',
+    },
+    podcast: {
+      say: 'Lawmakers, government, and courts: why the separation of powers is the ultimate safeguard of any democracy.',
+      headline: 'Ep. 23 · Who Watches the Rulers?',
     },
   },
 };

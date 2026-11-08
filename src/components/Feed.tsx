@@ -2,16 +2,15 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { CLIPS } from '@/data/clips';
-import { getScenesWithHook, VIBES } from '@/data/hooks';
+import { getScenesWithHook, resolveVibeForClip } from '@/data/hooks';
 import { CHECKIN_POINTS, DAILY_GOAL, DAILY_GOAL_POINTS, ROUND_SIZE, STORAGE_KEY } from '@/lib/config';
 import { buildRound } from '@/lib/round';
 import { initVoices, preloadSpeech, setPreferredVoice, speechSupported, unlockSpeech } from '@/lib/speech';
-import type { Clip, Metrics, Stats, VibeMode } from '@/lib/types';
+import type { Clip, Metrics, Stats, VibeSetting } from '@/lib/types';
 import AdBreak from './AdBreak';
 import { Bookmark, Check, ChevronDown, CurioLogo, Flame, Pause, PlayFeed, Plus, User, Volume, VolumeOff } from './Icons';
 import Profile from './Profile';
 import Quiz from './Quiz';
-import TopicPicker from './TopicPicker';
 import VideoCard from './VideoCard';
 
 type Phase = 'feed' | 'quiz' | 'ad' | 'streak-ad' | 'profile';
@@ -53,7 +52,7 @@ export default function Feed() {
   const [dailyWatched, setDailyWatched] = useState(0);
   const [dailyGoalClaimed, setDailyGoalClaimed] = useState(false);
   const [metrics, setMetrics] = useState<Metrics>(EMPTY_METRICS);
-  const [vibe, setVibe] = useState<VibeMode>('stickman');
+  const [vibe, setVibe] = useState<VibeSetting>('auto');
   const [voiceURI, setVoiceURI] = useState('');
   const [rounds, setRounds] = useState(0);
   const [toast, setToast] = useState('');
@@ -135,7 +134,7 @@ export default function Feed() {
           savedVoice = s.voiceURI;
           setVoiceURI(s.voiceURI);
         }
-        if (s.vibe === 'stickman' || s.vibe === 'makeup' || s.vibe === 'sport' || s.vibe === 'podcast') {
+        if (s.vibe === 'auto' || s.vibe === 'stickman' || s.vibe === 'makeup' || s.vibe === 'sport' || s.vibe === 'podcast') {
           setVibe(s.vibe);
         }
         const r = buildRound({ topics: t, missed: m, seen: sn, size: roundSize });
@@ -153,7 +152,8 @@ export default function Feed() {
   useEffect(() => {
     const first = clips[0];
     if (first) {
-      preloadSpeech(getScenesWithHook(first, vibe).map((s) => s.say));
+      const firstVibe = resolveVibeForClip(first, vibe);
+      preloadSpeech(getScenesWithHook(first, firstVibe).map((s) => s.say));
     }
   }, [clips, vibe, voiceURI]);
 
@@ -445,7 +445,7 @@ export default function Feed() {
             <VideoCard
               key={`${batch}-${c.id}`}
               clip={c}
-              vibe={vibe}
+              vibe={resolveVibeForClip(c, vibe)}
               index={i}
               active={i === active}
               near={i === active + 1}
@@ -501,32 +501,13 @@ export default function Feed() {
         {!started && (
           <div className="gate">
             <div className="gatebrand">
-              <CurioLogo size={38} />
+              <CurioLogo size={42} />
               <span>curio</span>
             </div>
             <p className="eyebrow">Learn for free</p>
             <h1>Scrolling that gets you somewhere</h1>
-            <p>Short learning videos. A quick quiz after every {clips.length} videos.</p>
-            {!onboarded && (
-              <>
-                <p className="small">How should we hook your brain? Pick a vibe:</p>
-                <div className="topics" role="group" aria-label="Video style">
-                  {VIBES.map((v) => (
-                    <button
-                      key={v.id}
-                      type="button"
-                      className="topic"
-                      aria-pressed={vibe === v.id}
-                      onClick={() => setVibe(v.id)}
-                    >
-                      {v.badge}
-                    </button>
-                  ))}
-                </div>
-                <p className="small">What do you want to learn? Pick some, or skip to see everything.</p>
-                <TopicPicker selected={topics} onToggle={toggleTopic} />
-              </>
-            )}
+            <p>Short learning videos matched to each topic. A quick quiz after every {clips.length} videos.</p>
+            <p className="small">Customize your topics & video vibes anytime in Profile below.</p>
             <div className="gate-actions">
               <button type="button" className="primary" onClick={() => start(true)}>
                 Start with sound

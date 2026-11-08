@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { VIBES } from '@/data/hooks';
+import { VIBE_OPTIONS } from '@/data/hooks';
 import { DAILY_GOAL, DAILY_GOAL_POINTS } from '@/lib/config';
 import { getEnglishVoices, speak, subscribeVoices, type VoiceOption } from '@/lib/speech';
-import type { Clip, Metrics, Stats, VibeMode } from '@/lib/types';
+import type { Clip, Metrics, Stats, VibeSetting } from '@/lib/types';
 import { Check, Cross, Flame, Volume } from './Icons';
 import TopicPicker from './TopicPicker';
 
@@ -17,8 +17,8 @@ type Props = {
   stats: Stats;
   metrics: Metrics;
   streakBroken: boolean;
-  vibe: VibeMode;
-  onSelectVibe: (vibe: VibeMode) => void;
+  vibe: VibeSetting;
+  onSelectVibe: (vibe: VibeSetting) => void;
   voiceURI: string;
   onSelectVoice: (uri: string) => void;
   onProtectStreak: () => void;
@@ -137,9 +137,13 @@ export default function Profile({
         )}
       </div>
 
+      <p className="eyebrow">Topics & video themes</p>
+      <TopicPicker selected={topics} onToggle={onToggleTopic} showVibeTag />
+      <p className="why small">Pick what appears in your feed (none selected = all topics). Each topic comes with its matched video vibe.</p>
+
       <p className="eyebrow">Video style & hook</p>
       <div className="topics" role="group" aria-label="Video style">
-        {VIBES.map((v) => (
+        {VIBE_OPTIONS.map((v) => (
           <button
             key={v.id}
             type="button"
@@ -152,7 +156,7 @@ export default function Profile({
         ))}
       </div>
       <p className="why small">
-        {VIBES.find((x) => x.id === vibe)?.desc}
+        {VIBE_OPTIONS.find((x) => x.id === vibe)?.desc}
       </p>
 
       {voices.length > 0 && (
@@ -226,10 +230,6 @@ export default function Profile({
           <span>Sponsor CTA taps</span>
         </div>
       </div>
-
-      <p className="eyebrow">Topics</p>
-      <TopicPicker selected={topics} onToggle={onToggleTopic} />
-      <p className="why small">None selected means all topics. Changes apply when you close this screen.</p>
 
       <p className="eyebrow">Saved</p>
       {saved.length === 0 ? (
