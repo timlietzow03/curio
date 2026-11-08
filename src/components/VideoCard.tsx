@@ -1,12 +1,15 @@
 'use client';
 
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import type { Clip, Visual } from '@/lib/types';
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
+import { getScenesWithHook } from '@/data/hooks';
+import type { Clip, VibeMode, Visual } from '@/lib/types';
 import { estimateMs, preloadSpeech, speak, speechSupported } from '@/lib/speech';
 import { Check } from './Icons';
+import StageActor from './StageActor';
 
 type Props = {
   clip: Clip;
+  vibe: VibeMode;
   index: number;
   active: boolean;
   near?: boolean;
@@ -16,10 +19,11 @@ type Props = {
   review?: boolean;
 };
 
-function SceneVisual({ v }: { v: Visual }) {
+function SceneVisual({ v, isHook }: { v: Visual; isHook: boolean }) {
   if (v.kind === 'formula') {
     return (
-      <div className="v-formula">
+      <div className={`v-formula${isHook ? ' hook-card' : ''}`}>
+        {isHook && <span className="hook-pill">WAIT FOR IT · HOOK</span>}
         <p className={v.main.length > 18 ? 'main long' : 'main'}>{v.main}</p>
         {v.sub && <p className="sub">{v.sub}</p>}
       </div>
@@ -46,13 +50,18 @@ function SceneVisual({ v }: { v: Visual }) {
   );
 }
 
-export default function VideoCard({ clip, index, active, near = false, started, muted, paused, review = false }: Props) {
-  const scenes = clip.scenes;
+export default function VideoCard({ clip, vibe, index, active, near = false, started, muted, paused, review = false }: Props) {
+  const scenes = useMemo(() => getScenesWithHook(clip, vibe), [clip, vibe]);
   const [si, setSi] = useState(0);
   const [durMs, setDurMs] = useState(() => estimateMs(scenes[0]?.say ?? ''));
+  const [vidOk, setVidOk] = useState(true);
   const siRef = useRef(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const playing = active && started && !paused;
+  const safeSi = Math.min(si, scenes.length - 1);
+  const isHook = safeSi === 0 && scenes.length > clip.scenes.length;
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const videoSrc = clip.videoUrl || `${basePath}/videos/vibe-${vibe}.mp4`;
 
   const go = (i: number) => {
     siRef.current = i;
@@ -62,18 +71,20 @@ export default function VideoCard({ clip, index, active, near = false, started, 
 
   // Preload neural audio for the active and next clip so playback starts instantly.
   useEffect(() => {
-    if (clip.videoUrl || muted || (!active && !near)) return;
+    if (muted || (!active && !near)) return;
     preloadSpeech(scenes.map((s) => s.say));
-  }, [active, near, muted, clip.videoUrl, scenes]);
+  }, [active, near, muted, scenes]);
 
-  // A clip that scrolls out of view starts from the beginning next time.
+  // A clip that scrolls out of view or switches vibe starts from the hook.
   useEffect(() => {
+    setVidOk(true);
     if (!active) go(0);
-  }, [active]);
+  }, [active, vibe, videoSrc]);
 
-  // Generated lesson: speak each scene, then move on. Loops like a short video.
+  // Speak each scene (starting with the viral hook), then move on. Loops like a short video.
+  // Works both with generated visual scenes AND over a background loop video (clip.videoUrl).
   useEffect(() => {
-    if (clip.videoUrl || !playing) return;
+    if (!playing) return;
     let alive = true;
     let cancel: (() => void) | undefined;
     let timer: ReturnType<typeof setTimeout> | undefined;
@@ -93,7 +104,7 @@ export default function VideoCard({ clip, index, active, near = false, started, 
       }
     };
 
-    run(siRef.current);
+    run(siRef.current < scenes.length ? siRef.current : 0);
     return () => {
       alive = false;
       cancel?.();
@@ -101,30 +112,40 @@ export default function VideoCard({ clip, index, active, near = false, started, 
     };
   }, [playing, muted, clip, scenes]);
 
-  // Real video file: play and pause with the feed.
+  // Optional 8-10s AI background video loop (e.g. from GCP Veo): plays and pauses with the feed.
   useEffect(() => {
     const v = videoRef.current;
-    if (!v) return;
+    if (!v || !vidOk) return;
     if (playing) v.play().catch(() => {});
     else v.pause();
-  }, [playing]);
+  }, [playing, vidOk, videoSrc]);
 
   return (
-    <article className="card" data-i={index} style={{ '--h': clip.hue } as CSSProperties}>
+    <article className={`card vibe-${vibe}`} data-i={index} style={{ '--h': clip.hue } as CSSProperties}>
       <div className="backdrop" />
-      {clip.videoUrl ? (
-        <video ref={videoRef} className="media" src={clip.videoUrl} loop playsInline muted={muted} preload="metadata" />
-      ) : (
-        <div className="stagefx">
-          <div key={si} className="visual">
-            <SceneVisual v={scenes[si].visual} />
-          </div>
-        </div>
+      {vidOk && (
+        <video
+          ref={videoRef}
+          className="media"
+          src={videoSrc}
+          loop
+          playsInline
+          muted
+          preload={active ? 'metadata' : 'none'}
+          onError={() => setVidOk(false)}
+        />
       )}
+      <div className="stagefx">
+        <div key={`${vibe}-${safeSi}`} className="visual">
+          <SceneVisual v={scenes[safeSi].visual} isHook={isHook} />
+        </div>
+      </div>
+      <StageActor vibe={vibe} speaking={playing} isHook={isHook} />
       <div className="scrim" />
       <div className="info">
         <div className="chips">
           {review && <span className="tag review">Review</span>}
+          {isHook && <span className="tag hooktag">Hook</span>}
           <span className="tag">{clip.subject}</span>
           {clip.channel.verified && (
             <span className="src">
@@ -135,27 +156,23 @@ export default function VideoCard({ clip, index, active, near = false, started, 
         </div>
         <h2>{clip.title}</h2>
         <p className="by">{clip.channel.name}</p>
-        {!clip.videoUrl && (
-          <p key={si} className="caption">
-            {scenes[si].say}
-          </p>
-        )}
+        <p key={`${vibe}-${safeSi}`} className="caption">
+          {scenes[safeSi].say}
+        </p>
       </div>
-      {!clip.videoUrl && (
-        <div className="clipbar" aria-hidden="true">
-          {scenes.map((_, i) => (
-            <i
-              key={i}
-              className={i < si ? 'done' : i === si ? 'cur' : ''}
-              style={
-                i === si
-                  ? ({ '--dur': `${durMs}ms`, animationPlayState: playing ? 'running' : 'paused' } as CSSProperties)
-                  : undefined
-              }
-            />
-          ))}
-        </div>
-      )}
+      <div className="clipbar" aria-hidden="true">
+        {scenes.map((_, i) => (
+          <i
+            key={i}
+            className={i < safeSi ? 'done' : i === safeSi ? 'cur' : ''}
+            style={
+              i === safeSi
+                ? ({ '--dur': `${durMs}ms`, animationPlayState: playing ? 'running' : 'paused' } as CSSProperties)
+                : undefined
+            }
+          />
+        ))}
+      </div>
     </article>
   );
 }

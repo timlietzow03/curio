@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { VIBES } from '@/data/hooks';
 import { DAILY_GOAL, DAILY_GOAL_POINTS } from '@/lib/config';
 import { getEnglishVoices, speak, subscribeVoices, type VoiceOption } from '@/lib/speech';
-import type { Clip, Metrics, Stats } from '@/lib/types';
+import type { Clip, Metrics, Stats, VibeMode } from '@/lib/types';
 import { Check, Cross, Flame, Volume } from './Icons';
 import TopicPicker from './TopicPicker';
 
@@ -16,6 +17,8 @@ type Props = {
   stats: Stats;
   metrics: Metrics;
   streakBroken: boolean;
+  vibe: VibeMode;
+  onSelectVibe: (vibe: VibeMode) => void;
   voiceURI: string;
   onSelectVoice: (uri: string) => void;
   onProtectStreak: () => void;
@@ -43,6 +46,8 @@ export default function Profile({
   stats,
   metrics,
   streakBroken,
+  vibe,
+  onSelectVibe,
   voiceURI,
   onSelectVoice,
   onProtectStreak,
@@ -131,6 +136,24 @@ export default function Profile({
           </div>
         )}
       </div>
+
+      <p className="eyebrow">Video style & hook</p>
+      <div className="topics" role="group" aria-label="Video style">
+        {VIBES.map((v) => (
+          <button
+            key={v.id}
+            type="button"
+            className="topic"
+            aria-pressed={vibe === v.id}
+            onClick={() => onSelectVibe(v.id)}
+          >
+            {v.badge}
+          </button>
+        ))}
+      </div>
+      <p className="why small">
+        {VIBES.find((x) => x.id === vibe)?.desc}
+      </p>
 
       {voices.length > 0 && (
         <>

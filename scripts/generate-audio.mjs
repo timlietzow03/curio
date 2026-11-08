@@ -54,13 +54,19 @@ async function synthesizeToFile(text, outPath) {
 
 async function main() {
   const clipsPath = path.join(process.cwd(), 'src', 'data', 'clips.ts');
+  const hooksPath = path.join(process.cwd(), 'src', 'data', 'hooks.ts');
   const clipsSource = await fs.readFile(clipsPath, 'utf8');
+  let hooksSource = '';
+  try {
+    hooksSource = await fs.readFile(hooksPath, 'utf8');
+  } catch {}
+  const combinedSource = `${clipsSource}\n${hooksSource}`;
 
-  // Extract all `say: '...'` or `say: "..."` strings from clips.ts
+  // Extract all `say: '...'` or `say: "..."` strings from clips.ts and hooks.ts
   const regex = /say:\s*(['"])((?:\\.|(?!\1).)*)\1/g;
   const phrases = new Set();
   let match;
-  while ((match = regex.exec(clipsSource)) !== null) {
+  while ((match = regex.exec(combinedSource)) !== null) {
     const raw = match[2].replace(/\\'/g, "'").replace(/\\"/g, '"');
     phrases.add(raw);
   }

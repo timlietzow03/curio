@@ -1,3 +1,5 @@
+export type VibeMode = 'stickman' | 'makeup' | 'sport' | 'podcast';
+
 export type Visual =
   | { kind: 'formula'; main: string; sub?: string }
   | { kind: 'points'; items: string[] }

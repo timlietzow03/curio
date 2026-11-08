@@ -2,10 +2,11 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { CLIPS } from '@/data/clips';
+import { getScenesWithHook, VIBES } from '@/data/hooks';
 import { CHECKIN_POINTS, DAILY_GOAL, DAILY_GOAL_POINTS, ROUND_SIZE, STORAGE_KEY } from '@/lib/config';
 import { buildRound } from '@/lib/round';
 import { initVoices, preloadSpeech, setPreferredVoice, speechSupported, unlockSpeech } from '@/lib/speech';
-import type { Clip, Metrics, Stats } from '@/lib/types';
+import type { Clip, Metrics, Stats, VibeMode } from '@/lib/types';
 import AdBreak from './AdBreak';
 import { Bookmark, Check, ChevronDown, CurioLogo, Flame, Pause, Volume, VolumeOff } from './Icons';
 import Profile from './Profile';
@@ -52,6 +53,7 @@ export default function Feed() {
   const [dailyWatched, setDailyWatched] = useState(0);
   const [dailyGoalClaimed, setDailyGoalClaimed] = useState(false);
   const [metrics, setMetrics] = useState<Metrics>(EMPTY_METRICS);
+  const [vibe, setVibe] = useState<VibeMode>('stickman');
   const [voiceURI, setVoiceURI] = useState('');
   const [rounds, setRounds] = useState(0);
   const [toast, setToast] = useState('');
@@ -133,6 +135,9 @@ export default function Feed() {
           savedVoice = s.voiceURI;
           setVoiceURI(s.voiceURI);
         }
+        if (s.vibe === 'stickman' || s.vibe === 'makeup' || s.vibe === 'sport' || s.vibe === 'podcast') {
+          setVibe(s.vibe);
+        }
         const r = buildRound({ topics: t, missed: m, seen: sn, size: roundSize });
         setClips(r.clips);
         setReview(r.review);
@@ -147,10 +152,10 @@ export default function Feed() {
   // Preload the first clip's neural audio while the user is on the start screen.
   useEffect(() => {
     const first = clips[0];
-    if (first && !first.videoUrl) {
-      preloadSpeech(first.scenes.map((s) => s.say));
+    if (first) {
+      preloadSpeech(getScenesWithHook(first, vibe).map((s) => s.say));
     }
-  }, [clips, voiceURI]);
+  }, [clips, vibe, voiceURI]);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -173,6 +178,7 @@ export default function Feed() {
           dailyWatched,
           dailyGoalClaimed,
           metrics,
+          vibe,
           voiceURI,
         }),
       );
@@ -194,6 +200,7 @@ export default function Feed() {
     dailyWatched,
     dailyGoalClaimed,
     metrics,
+    vibe,
     voiceURI,
   ]);
 
@@ -438,6 +445,7 @@ export default function Feed() {
             <VideoCard
               key={`${batch}-${c.id}`}
               clip={c}
+              vibe={vibe}
               index={i}
               active={i === active}
               near={i === active + 1}
@@ -501,6 +509,20 @@ export default function Feed() {
             <p>Short learning videos. A quick quiz after every {clips.length} videos.</p>
             {!onboarded && (
               <>
+                <p className="small">How should we hook your brain? Pick a vibe:</p>
+                <div className="topics" role="group" aria-label="Video style">
+                  {VIBES.map((v) => (
+                    <button
+                      key={v.id}
+                      type="button"
+                      className="topic"
+                      aria-pressed={vibe === v.id}
+                      onClick={() => setVibe(v.id)}
+                    >
+                      {v.badge}
+                    </button>
+                  ))}
+                </div>
                 <p className="small">What do you want to learn? Pick some, or skip to see everything.</p>
                 <TopicPicker selected={topics} onToggle={toggleTopic} />
               </>
@@ -545,6 +567,8 @@ export default function Feed() {
           stats={stats}
           metrics={metrics}
           streakBroken={streakBroken}
+          vibe={vibe}
+          onSelectVibe={setVibe}
           voiceURI={voiceURI}
           onSelectVoice={selectVoice}
           onProtectStreak={() => setPhase('streak-ad')}

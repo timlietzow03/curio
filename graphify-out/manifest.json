@@ -6,9 +6,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1794140476.5704615,
-    "seen": 1794140555.27289,
-    "ast_hash": "b8c5693dc18201af0a3f4e9d99af79bd",
+    "mtime": 1794150099.2592912,
+    "seen": 1794150112.3233132,
+    "ast_hash": "9f0da9006021729f2e45d89d369da928",
     "semantic_hash": ""
   },
   "src/app/layout.tsx": {
@@ -30,9 +30,9 @@
     "semantic_hash": ""
   },
   "src/components/Feed.tsx": {
-    "mtime": 1794139857.518455,
-    "seen": 1794139894.8104165,
-    "ast_hash": "9f874ccb6ae38f43104b0b0bdf0ef11d",
+    "mtime": 1794149999.6643088,
+    "seen": 1794150112.3233235,
+    "ast_hash": "70f4fd624d3f1e2f7d9202b53ad9d155",
     "semantic_hash": ""
   },
   "src/components/Icons.tsx": {
@@ -42,9 +42,9 @@
     "semantic_hash": ""
   },
   "src/components/Profile.tsx": {
-    "mtime": 1794139866.913872,
-    "seen": 1794139894.8104188,
-    "ast_hash": "909c8e52e05855023c55996cf52dff99",
+    "mtime": 1794149951.7365263,
+    "seen": 1794150112.3233256,
+    "ast_hash": "30c19247a3934bfb934dfd3293b793c3",
     "semantic_hash": ""
   },
   "src/components/Quiz.tsx": {
@@ -60,9 +60,9 @@
     "semantic_hash": ""
   },
   "src/components/VideoCard.tsx": {
-    "mtime": 1794139834.346932,
-    "seen": 1794139894.8104222,
-    "ast_hash": "1642f00d1f945906ac79a530b153f019",
+    "mtime": 1794150986.8304045,
+    "seen": 1794150997.9384139,
+    "ast_hash": "f5e1785e352eae2a8d4037b28ba09595",
     "semantic_hash": ""
   },
   "src/data/ads.ts": {
@@ -96,9 +96,9 @@
     "semantic_hash": ""
   },
   "src/lib/types.ts": {
-    "mtime": 1794139158.6424267,
-    "seen": 1794139305.5904787,
-    "ast_hash": "ba800db5c2ee548a14df1d5c123aa5ba",
+    "mtime": 1794149821.8419738,
+    "seen": 1794150112.3233366,
+    "ast_hash": "b5e491f341ec1e58a5886f10974867cf",
     "semantic_hash": ""
   },
   "src/lib/util.ts": {
@@ -144,9 +144,9 @@
     "semantic_hash": ""
   },
   "scripts/generate-audio.mjs": {
-    "mtime": 1794140397.852415,
-    "seen": 1794140555.2728927,
-    "ast_hash": "ed368f9a83e11f7db2d7f597ce6b21b1",
+    "mtime": 1794150060.27554,
+    "seen": 1794150112.323315,
+    "ast_hash": "84b32e4bf3ce8c7f4e8283f5beedb0e9",
     "semantic_hash": ""
   },
   "public/audio/00338622.mp3": {
@@ -513,6 +513,534 @@
     "mtime": 1794140406.9885423,
     "seen": 1794140555.2729704,
     "ast_hash": "a4e6339c6a9c7808926e5b47cfcfecc3",
+    "semantic_hash": ""
+  },
+  "scripts/generate-gcp-videos.mjs": {
+    "mtime": 1794151635.5857046,
+    "seen": 1794152083.3359923,
+    "ast_hash": "6c20d282598baad7d3910d648dc750ef",
+    "semantic_hash": ""
+  },
+  "src/components/StageActor.tsx": {
+    "mtime": 1794149912.2020106,
+    "seen": 1794150112.3233275,
+    "ast_hash": "c91c2972912ac111b0cb202c756320a5",
+    "semantic_hash": ""
+  },
+  "src/data/hooks.ts": {
+    "mtime": 1794149887.795772,
+    "seen": 1794150112.3233325,
+    "ast_hash": "0215b70d2be6092344bc75133df0033f",
+    "semantic_hash": ""
+  },
+  "COSTS.md": {
+    "mtime": 1794152062.5774786,
+    "seen": 1794152083.3360202,
+    "ast_hash": "ddcc5407bc390812b0a729bfc8bc4ecc",
+    "semantic_hash": ""
+  },
+  "public/audio/05479458.mp3": {
+    "mtime": 1794151875.9956908,
+    "seen": 1794152083.3360257,
+    "ast_hash": "dcdb2244b04086a21cc440d23f83e722",
+    "semantic_hash": ""
+  },
+  "public/audio/07d8b120.mp3": {
+    "mtime": 1794151896.323015,
+    "seen": 1794152083.3360267,
+    "ast_hash": "1d7f9a20153f15b9433c865b07030aaf",
+    "semantic_hash": ""
+  },
+  "public/audio/08a1bbd3.mp3": {
+    "mtime": 1794151891.358625,
+    "seen": 1794152083.3360276,
+    "ast_hash": "5a854eed5a2acff8e915a2b4746e885e",
+    "semantic_hash": ""
+  },
+  "public/audio/0afa58ef.mp3": {
+    "mtime": 1794151952.2074053,
+    "seen": 1794152083.3360286,
+    "ast_hash": "11f4d970788694bea8b355c3db2322ee",
+    "semantic_hash": ""
+  },
+  "public/audio/0b39d603.mp3": {
+    "mtime": 1794151863.6976142,
+    "seen": 1794152083.3360295,
+    "ast_hash": "14e00ebb288a0b731117c9c41d421d57",
+    "semantic_hash": ""
+  },
+  "public/audio/125506e2.mp3": {
+    "mtime": 1794151919.890166,
+    "seen": 1794152083.3360353,
+    "ast_hash": "327367fa853d18cee18573fd0577c739",
+    "semantic_hash": ""
+  },
+  "public/audio/135b3e63.mp3": {
+    "mtime": 1794151910.7172334,
+    "seen": 1794152083.3360374,
+    "ast_hash": "3254f7be004bcbd60f722e4eb4549721",
+    "semantic_hash": ""
+  },
+  "public/audio/13b2e121.mp3": {
+    "mtime": 1794152001.3797379,
+    "seen": 1794152083.3360384,
+    "ast_hash": "6aee2d19554e71f21788cb036e9a5893",
+    "semantic_hash": ""
+  },
+  "public/audio/17f87d4f.mp3": {
+    "mtime": 1794151996.2675908,
+    "seen": 1794152083.3360395,
+    "ast_hash": "4f628810ae63a8f5f59ae657e5823100",
+    "semantic_hash": ""
+  },
+  "public/audio/18acba84.mp3": {
+    "mtime": 1794151935.1600144,
+    "seen": 1794152083.3360403,
+    "ast_hash": "521639f247f103842094a0b32c5888fe",
+    "semantic_hash": ""
+  },
+  "public/audio/18e25bf9.mp3": {
+    "mtime": 1794151879.003158,
+    "seen": 1794152083.3360412,
+    "ast_hash": "6231971632ee3be3daa5366471fa422f",
+    "semantic_hash": ""
+  },
+  "public/audio/1adc7423.mp3": {
+    "mtime": 1794151981.0214162,
+    "seen": 1794152083.3360434,
+    "ast_hash": "2090e677a62e089a238168d472922aba",
+    "semantic_hash": ""
+  },
+  "public/audio/1ce6e20d.mp3": {
+    "mtime": 1794151909.8628402,
+    "seen": 1794152083.3360453,
+    "ast_hash": "45fe3041f3baa8543507c7d22541426e",
+    "semantic_hash": ""
+  },
+  "public/audio/1ebce0e8.mp3": {
+    "mtime": 1794151987.9357667,
+    "seen": 1794152083.336046,
+    "ast_hash": "66a77403ff6e11dcd64d072a7f1544a4",
+    "semantic_hash": ""
+  },
+  "public/audio/26a9e1ab.mp3": {
+    "mtime": 1794151972.937987,
+    "seen": 1794152083.3360481,
+    "ast_hash": "d9735af01a92185d1be56d9e6800e760",
+    "semantic_hash": ""
+  },
+  "public/audio/277a95ed.mp3": {
+    "mtime": 1794151944.4262333,
+    "seen": 1794152083.336049,
+    "ast_hash": "61e63bf67cde306831976b24521b88ed",
+    "semantic_hash": ""
+  },
+  "public/audio/2840f842.mp3": {
+    "mtime": 1794151871.3242247,
+    "seen": 1794152083.3360503,
+    "ast_hash": "fb3cfde7c92afbeb3dd30f6cfac91477",
+    "semantic_hash": ""
+  },
+  "public/audio/2b1e9faf.mp3": {
+    "mtime": 1794151889.070864,
+    "seen": 1794152083.3360522,
+    "ast_hash": "6f1dd69c5c36a354fddb397307c1454e",
+    "semantic_hash": ""
+  },
+  "public/audio/2ff28e55.mp3": {
+    "mtime": 1794151997.351984,
+    "seen": 1794152083.3360543,
+    "ast_hash": "3231d37c6a7eb6637e4aafa545227158",
+    "semantic_hash": ""
+  },
+  "public/audio/3ab25728.mp3": {
+    "mtime": 1794151896.5587623,
+    "seen": 1794152083.3360572,
+    "ast_hash": "3b8692b8e2821783476dc70a073e22a6",
+    "semantic_hash": ""
+  },
+  "public/audio/3adb287d.mp3": {
+    "mtime": 1794152007.1412604,
+    "seen": 1794152083.3360581,
+    "ast_hash": "d380106ad854869a457834d3e8a89cba",
+    "semantic_hash": ""
+  },
+  "public/audio/3b8ec1e3.mp3": {
+    "mtime": 1794151891.870903,
+    "seen": 1794152083.336059,
+    "ast_hash": "6a82c533080b629b3f41716e59d8eee6",
+    "semantic_hash": ""
+  },
+  "public/audio/42747bfa.mp3": {
+    "mtime": 1794152010.1059952,
+    "seen": 1794152083.3360624,
+    "ast_hash": "31a3bdd1d429792049cd2d29340db5df",
+    "semantic_hash": ""
+  },
+  "public/audio/42faddcf.mp3": {
+    "mtime": 1794151861.7354462,
+    "seen": 1794152083.3360634,
+    "ast_hash": "ddc0a32d586951744e11164ef95367e8",
+    "semantic_hash": ""
+  },
+  "public/audio/433892db.mp3": {
+    "mtime": 1794151933.8924577,
+    "seen": 1794152083.3360646,
+    "ast_hash": "d785ae5b7d4708915d0740f94b41980e",
+    "semantic_hash": ""
+  },
+  "public/audio/464efff9.mp3": {
+    "mtime": 1794151986.6805904,
+    "seen": 1794152083.3360665,
+    "ast_hash": "65b6549dcfe701c0d6697c140a9ed502",
+    "semantic_hash": ""
+  },
+  "public/audio/49f492e8.mp3": {
+    "mtime": 1794151971.7392983,
+    "seen": 1794152083.3360674,
+    "ast_hash": "9c77ad2825abda4d602d84ddd6264da0",
+    "semantic_hash": ""
+  },
+  "public/audio/5170dc2a.mp3": {
+    "mtime": 1794151975.6212285,
+    "seen": 1794152083.3360684,
+    "ast_hash": "ddbc40b286875c59e0ea5c65e29874a1",
+    "semantic_hash": ""
+  },
+  "public/audio/53324a70.mp3": {
+    "mtime": 1794151951.8401113,
+    "seen": 1794152083.3360693,
+    "ast_hash": "8f9f9a43e4a8ad7ee5499faeac79be1d",
+    "semantic_hash": ""
+  },
+  "public/audio/56a4241b.mp3": {
+    "mtime": 1794151962.1241012,
+    "seen": 1794152083.3360713,
+    "ast_hash": "e7729956381f5b18d4eabae3cde2fa19",
+    "semantic_hash": ""
+  },
+  "public/audio/58699504.mp3": {
+    "mtime": 1794151918.9209104,
+    "seen": 1794152083.3360732,
+    "ast_hash": "3efbf2cbdf01821d1f740e64edb32ee2",
+    "semantic_hash": ""
+  },
+  "public/audio/59b4b01e.mp3": {
+    "mtime": 1794151905.0733755,
+    "seen": 1794152083.3360739,
+    "ast_hash": "fca09cb15a78f79f16777678ce407bda",
+    "semantic_hash": ""
+  },
+  "public/audio/5bee923b.mp3": {
+    "mtime": 1794151896.1448605,
+    "seen": 1794152083.336075,
+    "ast_hash": "7c500ee9209d6cc0fb7be264b47f4df8",
+    "semantic_hash": ""
+  },
+  "public/audio/5cfb6c63.mp3": {
+    "mtime": 1794152010.7661724,
+    "seen": 1794152083.336076,
+    "ast_hash": "ce7fa54ef38e393b3959534b6113ae48",
+    "semantic_hash": ""
+  },
+  "public/audio/647b943d.mp3": {
+    "mtime": 1794152022.4977856,
+    "seen": 1794152083.336077,
+    "ast_hash": "71881e1752a5b079aada2accc1068c9f",
+    "semantic_hash": ""
+  },
+  "public/audio/69b58b93.mp3": {
+    "mtime": 1794152034.775495,
+    "seen": 1794152083.336078,
+    "ast_hash": "862caec2caf0fa4f663b0a1984a88c38",
+    "semantic_hash": ""
+  },
+  "public/audio/6f36ef21.mp3": {
+    "mtime": 1794151877.6792338,
+    "seen": 1794152083.336079,
+    "ast_hash": "8dbdb2ceccc98af8ee4ccf4780af6d33",
+    "semantic_hash": ""
+  },
+  "public/audio/7138428b.mp3": {
+    "mtime": 1794151862.1515677,
+    "seen": 1794152083.3360796,
+    "ast_hash": "4aa9932d060e10e7ac83d5027dbf8a60",
+    "semantic_hash": ""
+  },
+  "public/audio/744a12d3.mp3": {
+    "mtime": 1794151912.607432,
+    "seen": 1794152083.336083,
+    "ast_hash": "c53d0fa10d687ea11cd4a52fa3898213",
+    "semantic_hash": ""
+  },
+  "public/audio/7496ca1f.mp3": {
+    "mtime": 1794151980.6550522,
+    "seen": 1794152083.336084,
+    "ast_hash": "545ef22c00fe2f2253477f71924e0142",
+    "semantic_hash": ""
+  },
+  "public/audio/749d868f.mp3": {
+    "mtime": 1794151951.3904285,
+    "seen": 1794152083.3360848,
+    "ast_hash": "2cde58e43a07802086c315ec9cca4b13",
+    "semantic_hash": ""
+  },
+  "public/audio/75b2949a.mp3": {
+    "mtime": 1794151884.287573,
+    "seen": 1794152083.3360858,
+    "ast_hash": "90ef58b13f3338a7e7e97a7926fac1ff",
+    "semantic_hash": ""
+  },
+  "public/audio/78634e34.mp3": {
+    "mtime": 1794151867.3410609,
+    "seen": 1794152083.3360877,
+    "ast_hash": "f6a4c0803ff9a5cb4646f2302066f809",
+    "semantic_hash": ""
+  },
+  "public/audio/7af8bc17.mp3": {
+    "mtime": 1794151966.3168168,
+    "seen": 1794152083.3360922,
+    "ast_hash": "2a992c8470a2b4dfa02cb89b8ba3dd35",
+    "semantic_hash": ""
+  },
+  "public/audio/7c2f0341.mp3": {
+    "mtime": 1794151920.2883656,
+    "seen": 1794152083.3360932,
+    "ast_hash": "10d6d9c01b5c24d91b043a85ad4e09ae",
+    "semantic_hash": ""
+  },
+  "public/audio/7ef7b480.mp3": {
+    "mtime": 1794152017.7836695,
+    "seen": 1794152083.3360965,
+    "ast_hash": "ad975e0651a8c0bb21de92a46bbe5434",
+    "semantic_hash": ""
+  },
+  "public/audio/80da1071.mp3": {
+    "mtime": 1794151939.192817,
+    "seen": 1794152083.3360996,
+    "ast_hash": "4a17e8b7cbe4b487af45186ba9eb8de1",
+    "semantic_hash": ""
+  },
+  "public/audio/85110901.mp3": {
+    "mtime": 1794151911.1170788,
+    "seen": 1794152083.3361027,
+    "ast_hash": "830ecd22a8982447e18055b06989a41e",
+    "semantic_hash": ""
+  },
+  "public/audio/85ec965e.mp3": {
+    "mtime": 1794151928.7688942,
+    "seen": 1794152083.3361037,
+    "ast_hash": "29a2ed34970a19d5f1188f96962416dc",
+    "semantic_hash": ""
+  },
+  "public/audio/868dcd2d.mp3": {
+    "mtime": 1794151946.1161044,
+    "seen": 1794152083.3361046,
+    "ast_hash": "0e3ec5f5b5f355f3f7333bf8fafb5a0b",
+    "semantic_hash": ""
+  },
+  "public/audio/87115d3f.mp3": {
+    "mtime": 1794152035.9684327,
+    "seen": 1794152083.3361056,
+    "ast_hash": "656799ab221e7fee230dc6ce5e853c72",
+    "semantic_hash": ""
+  },
+  "public/audio/88db4895.mp3": {
+    "mtime": 1794151962.4681056,
+    "seen": 1794152083.3361065,
+    "ast_hash": "80f779932faf4aacfbfe5e78e3c8007e",
+    "semantic_hash": ""
+  },
+  "public/audio/8b29b7d8.mp3": {
+    "mtime": 1794151928.2531455,
+    "seen": 1794152083.3361075,
+    "ast_hash": "1f91caddfc9decb7645111a50adecdf0",
+    "semantic_hash": ""
+  },
+  "public/audio/918157c1.mp3": {
+    "mtime": 1794152016.9972596,
+    "seen": 1794152083.3361108,
+    "ast_hash": "1a226fa4a2e4e1b86143f4254b948ca4",
+    "semantic_hash": ""
+  },
+  "public/audio/92b93ea4.mp3": {
+    "mtime": 1794152037.9351425,
+    "seen": 1794152083.336113,
+    "ast_hash": "56fb5fc98f4055130d008f5a8cf12890",
+    "semantic_hash": ""
+  },
+  "public/audio/97f6bc25.mp3": {
+    "mtime": 1794152023.3389106,
+    "seen": 1794152083.336115,
+    "ast_hash": "cb560d98a1fc9c93de418e5729ca25cb",
+    "semantic_hash": ""
+  },
+  "public/audio/9e52c882.mp3": {
+    "mtime": 1794151871.2444127,
+    "seen": 1794152083.336118,
+    "ast_hash": "c6749606b2bcd014418bd5775ea8f87b",
+    "semantic_hash": ""
+  },
+  "public/audio/9ef82d90.mp3": {
+    "mtime": 1794151985.300591,
+    "seen": 1794152083.336119,
+    "ast_hash": "34dd79d285245dd115d627529595c012",
+    "semantic_hash": ""
+  },
+  "public/audio/a8464df2.mp3": {
+    "mtime": 1794151980.6550522,
+    "seen": 1794152083.3361225,
+    "ast_hash": "16c54c405bc1c96ff95450f4f6cddf6e",
+    "semantic_hash": ""
+  },
+  "public/audio/abe4e21c.mp3": {
+    "mtime": 1794152028.067021,
+    "seen": 1794152083.3361244,
+    "ast_hash": "08ab57b30ccd0d04168105efbd78b327",
+    "semantic_hash": ""
+  },
+  "public/audio/ac762ff1.mp3": {
+    "mtime": 1794151980.0085356,
+    "seen": 1794152083.3361268,
+    "ast_hash": "de8a03cebe9185576eb23b0ae4fde501",
+    "semantic_hash": ""
+  },
+  "public/audio/aea3469d.mp3": {
+    "mtime": 1794151871.18752,
+    "seen": 1794152083.3361275,
+    "ast_hash": "8ff7e36249d438cafc3c8e80c49cdccd",
+    "semantic_hash": ""
+  },
+  "public/audio/b34e5b8e.mp3": {
+    "mtime": 1794151975.9567862,
+    "seen": 1794152083.3361309,
+    "ast_hash": "126dfc3d56fd4a8655cd6ee696d2574a",
+    "semantic_hash": ""
+  },
+  "public/audio/bce2dec4.mp3": {
+    "mtime": 1794152015.4444194,
+    "seen": 1794152083.336134,
+    "ast_hash": "5ea028afadf517dcadc74e595cffedb4",
+    "semantic_hash": ""
+  },
+  "public/audio/c09a64f0.mp3": {
+    "mtime": 1794151991.4016085,
+    "seen": 1794152083.3361359,
+    "ast_hash": "e75920fa8277cd7a63224dedaa0e3e63",
+    "semantic_hash": ""
+  },
+  "public/audio/cbd51b54.mp3": {
+    "mtime": 1794152007.0308526,
+    "seen": 1794152083.3361428,
+    "ast_hash": "2c42969a8e37b36a2f15ee48f0bef58d",
+    "semantic_hash": ""
+  },
+  "public/audio/d7e6bd30.mp3": {
+    "mtime": 1794151863.904299,
+    "seen": 1794152083.336145,
+    "ast_hash": "d8e6a0b27586944d3e14de4c84e68a2e",
+    "semantic_hash": ""
+  },
+  "public/audio/d866b6f3.mp3": {
+    "mtime": 1794151944.6829126,
+    "seen": 1794152083.3361459,
+    "ast_hash": "a18e4a9893627b3ef806cabc1d758bf5",
+    "semantic_hash": ""
+  },
+  "public/audio/d88b0563.mp3": {
+    "mtime": 1794151936.9986079,
+    "seen": 1794152083.3361466,
+    "ast_hash": "a4a3d7a91044ac6da5ed3fe3d79adf70",
+    "semantic_hash": ""
+  },
+  "public/audio/e29bc613.mp3": {
+    "mtime": 1794151956.2093313,
+    "seen": 1794152083.3361511,
+    "ast_hash": "7bdebc5c124b6bab5d09e55dd8574984",
+    "semantic_hash": ""
+  },
+  "public/audio/e3f98ae3.mp3": {
+    "mtime": 1794151890.3831801,
+    "seen": 1794152083.336153,
+    "ast_hash": "b513017e1eb3bee34c45005684137dd5",
+    "semantic_hash": ""
+  },
+  "public/audio/e8999353.mp3": {
+    "mtime": 1794151928.241984,
+    "seen": 1794152083.3361542,
+    "ast_hash": "663391d3da29159f924b391f2768abae",
+    "semantic_hash": ""
+  },
+  "public/audio/e8c07737.mp3": {
+    "mtime": 1794151922.6000445,
+    "seen": 1794152083.3361552,
+    "ast_hash": "36d909a1233852b7767186f632ab44c2",
+    "semantic_hash": ""
+  },
+  "public/audio/e9741ece.mp3": {
+    "mtime": 1794152025.2735112,
+    "seen": 1794152083.336156,
+    "ast_hash": "8e2ab297e9fc339439f4cb6fcc161fcd",
+    "semantic_hash": ""
+  },
+  "public/audio/eaeab75e.mp3": {
+    "mtime": 1794151944.1375787,
+    "seen": 1794152083.3361568,
+    "ast_hash": "df9069fb76bbd1167f33ac5ee7a0136e",
+    "semantic_hash": ""
+  },
+  "public/audio/ede1a25e.mp3": {
+    "mtime": 1794151926.9534068,
+    "seen": 1794152083.336158,
+    "ast_hash": "80606443e7a28f20b62c7d0e0e4fee50",
+    "semantic_hash": ""
+  },
+  "public/audio/f105c3b5.mp3": {
+    "mtime": 1794152036.040813,
+    "seen": 1794152083.3361626,
+    "ast_hash": "c2cdf0f13d884974a6e84c79279db8ec",
+    "semantic_hash": ""
+  },
+  "public/audio/f461d4fe.mp3": {
+    "mtime": 1794152001.430164,
+    "seen": 1794152083.3361635,
+    "ast_hash": "9617a6e1ed6aac948cd615833f117ae0",
+    "semantic_hash": ""
+  },
+  "public/audio/f5ac0fb7.mp3": {
+    "mtime": 1794151963.1466928,
+    "seen": 1794152083.3361642,
+    "ast_hash": "5572d6907b73d73a8cebbdc0b07c3729",
+    "semantic_hash": ""
+  },
+  "public/audio/fcb27f9f.mp3": {
+    "mtime": 1794152015.8242054,
+    "seen": 1794152083.3361664,
+    "ast_hash": "7122746a5e8cfa55dca6f4237c25a7d5",
+    "semantic_hash": ""
+  },
+  "public/videos/vibe-makeup.mp4": {
+    "mtime": 1794151740.644003,
+    "seen": 1794152083.3361697,
+    "ast_hash": "0d740046dc73c2866ba982b63b206567",
+    "semantic_hash": ""
+  },
+  "public/videos/vibe-podcast.mp4": {
+    "mtime": 1794151672.58786,
+    "seen": 1794152083.336172,
+    "ast_hash": "2d2a41a275c5de4e3f75d62e2dc9fff3",
+    "semantic_hash": ""
+  },
+  "public/videos/vibe-sport.mp4": {
+    "mtime": 1794151801.4961667,
+    "seen": 1794152083.3361728,
+    "ast_hash": "f967e9e50dbc808cce162177a83610a5",
+    "semantic_hash": ""
+  },
+  "public/videos/vibe-stickman.mp4": {
+    "mtime": 1794151856.291686,
+    "seen": 1794152083.3361738,
+    "ast_hash": "185f0d9182c730776325cc0ecfa8e30e",
     "semantic_hash": ""
   },
   "package-lock.json": {

@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "generate:audio": "node scripts/generate-audio.mjs",
+    "generate:videos": "node scripts/generate-gcp-videos.mjs",
     "start": "next start"
   },
   "dependencies": {
