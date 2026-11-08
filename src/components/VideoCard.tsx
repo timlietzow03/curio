@@ -55,17 +55,20 @@ export default function VideoCard({ clip, vibe, index, active, near = false, sta
   const [si, setSi] = useState(0);
   const [durMs, setDurMs] = useState(() => estimateMs(scenes[0]?.say ?? ''));
   const [vidOk, setVidOk] = useState(true);
+  const [wordIdx, setWordIdx] = useState(0);
   const siRef = useRef(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const playing = active && started && !paused;
   const safeSi = Math.min(si, scenes.length - 1);
   const isHook = safeSi === 0 && scenes.length > clip.scenes.length;
+  const words = useMemo(() => scenes[safeSi].say.trim().split(/\s+/), [scenes, safeSi]);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const videoSrc = clip.videoUrl || `${basePath}/videos/vibe-${vibe}.mp4`;
 
   const go = (i: number) => {
     siRef.current = i;
     setSi(i);
+    setWordIdx(0);
     setDurMs(estimateMs(scenes[i]?.say ?? ''));
   };
 
@@ -112,6 +115,17 @@ export default function VideoCard({ clip, vibe, index, active, near = false, sta
     };
   }, [playing, muted, clip, scenes]);
 
+  // Sync karaoke word highlight with the active scene's audio duration.
+  useEffect(() => {
+    if (!playing || words.length <= 1) return;
+    setWordIdx(0);
+    const stepMs = Math.max(120, Math.floor((durMs * 0.92) / words.length));
+    const iv = setInterval(() => {
+      setWordIdx((w) => (w < words.length - 1 ? w + 1 : w));
+    }, stepMs);
+    return () => clearInterval(iv);
+  }, [playing, safeSi, durMs, words.length]);
+
   // Optional 8-10s AI background video loop (e.g. from GCP Veo): plays and pauses with the feed.
   useEffect(() => {
     const v = videoRef.current;
@@ -145,7 +159,9 @@ export default function VideoCard({ clip, vibe, index, active, near = false, sta
       <div className="info">
         <div className="chips">
           {review && <span className="tag review">Review</span>}
-          {isHook && <span className="tag hooktag">Hook</span>}
+          <span className={`tag${isHook ? ' hooktag' : ''}`}>
+            {isHook ? '⚡ Hook' : `Step ${safeSi} of ${scenes.length - 1}`}
+          </span>
           <span className="tag">{clip.subject}</span>
           {clip.channel.verified && (
             <span className="src">
@@ -157,7 +173,11 @@ export default function VideoCard({ clip, vibe, index, active, near = false, sta
         <h2>{clip.title}</h2>
         <p className="by">{clip.channel.name}</p>
         <p key={`${vibe}-${safeSi}`} className="caption">
-          {scenes[safeSi].say}
+          {words.map((w, k) => (
+            <span key={k} className={k <= wordIdx ? 'w-lit' : 'w-dim'}>
+              {w}{' '}
+            </span>
+          ))}
         </p>
       </div>
       <div className="clipbar" aria-hidden="true">

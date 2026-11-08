@@ -42,3 +42,18 @@ export const Volume = ({ size = 18 }: P) => (
 export const VolumeOff = ({ size = 18 }: P) => (
   <svg {...base(size)} {...stroke}><path d="M4 9.5v5h4l5 4v-13l-5 4H4z" /><path d="M17 9.5l4 5M21 9.5l-4 5" /></svg>
 );
+export const Plus = ({ size = 20 }: P) => (
+  <svg {...base(size)} {...stroke} strokeWidth={2.4}><path d="M12 5v14M5 12h14" /></svg>
+);
+export const User = ({ size = 18 }: P) => (
+  <svg {...base(size)} {...stroke} strokeWidth={2}>
+    <circle cx="12" cy="8" r="4" />
+    <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+  </svg>
+);
+export const PlayFeed = ({ size = 18 }: P) => (
+  <svg {...base(size)} {...stroke} strokeWidth={2}>
+    <rect x="5" y="3" width="14" height="18" rx="2.5" />
+    <path d="M10 9l5 3-5 3z" fill="currentColor" />
+  </svg>
+);

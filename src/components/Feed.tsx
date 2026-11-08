@@ -8,7 +8,7 @@ import { buildRound } from '@/lib/round';
 import { initVoices, preloadSpeech, setPreferredVoice, speechSupported, unlockSpeech } from '@/lib/speech';
 import type { Clip, Metrics, Stats, VibeMode } from '@/lib/types';
 import AdBreak from './AdBreak';
-import { Bookmark, Check, ChevronDown, CurioLogo, Flame, Pause, Volume, VolumeOff } from './Icons';
+import { Bookmark, Check, ChevronDown, CurioLogo, Flame, Pause, PlayFeed, Plus, User, Volume, VolumeOff } from './Icons';
 import Profile from './Profile';
 import Quiz from './Quiz';
 import TopicPicker from './TopicPicker';
@@ -581,6 +581,33 @@ export default function Feed() {
         />
       )}
       {toast && <div className="toast" role="status">{toast}</div>}
+
+      <nav className="botbar" aria-label="Main navigation">
+        <button
+          type="button"
+          className={`navbtn${phase === 'feed' ? ' active' : ''}`}
+          onClick={() => {
+            if (phase === 'profile') closeProfile();
+          }}
+        >
+          <PlayFeed size={18} />
+          <span>Feed</span>
+        </button>
+        <button type="button" className="navbtn addbtn" aria-label="Add">
+          <span className="addpill">
+            <Plus size={18} />
+          </span>
+          <span>Add</span>
+        </button>
+        <button
+          type="button"
+          className={`navbtn${phase === 'profile' ? ' active' : ''}`}
+          onClick={() => (phase === 'profile' ? closeProfile() : openProfile())}
+        >
+          <User size={18} />
+          <span>Profile</span>
+        </button>
+      </nav>
     </section>
   );
 }
