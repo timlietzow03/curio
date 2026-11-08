@@ -501,7 +501,7 @@ export default function Feed() {
         {!started && (
           <div className="gate">
             <div className="gatebrand">
-              <CurioLogo size={48} />
+              <CurioLogo size={38} />
               <span>curio</span>
             </div>
             <p className="eyebrow">Learn for free</p>
@@ -527,13 +527,15 @@ export default function Feed() {
                 <TopicPicker selected={topics} onToggle={toggleTopic} />
               </>
             )}
-            <button className="primary" onClick={() => start(true)}>
-              Start with sound
-            </button>
-            <button className="ghost" onClick={() => start(false)}>
-              Start without sound
-            </button>
-            {!speech && <p className="small">Your browser can’t speak text out loud. Videos play with captions only.</p>}
+            <div className="gate-actions">
+              <button type="button" className="primary" onClick={() => start(true)}>
+                Start with sound
+              </button>
+              <button type="button" className="ghost" onClick={() => start(false)}>
+                Start without sound
+              </button>
+              {!speech && <p className="small">Your browser can’t speak text out loud. Videos play with captions only.</p>}
+            </div>
           </div>
         )}
       </div>

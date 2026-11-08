@@ -1,17 +1,17 @@
 # Graph Report - lernscroll  (2026-11-08)
 
 ## Corpus Check
-- 28 files · ~14,820 words
+- 28 files · ~14,849 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 2 file(s) not represented in the graph (top: (none) 1, .css 1)
 
 ## Summary
-- 191 nodes · 343 edges · 11 communities (9 shown, 2 thin omitted)
+- 191 nodes · 342 edges · 11 communities (9 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b923801e`
+- Built from commit: `9ab7cd8a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -31,14 +31,14 @@
 ## God Nodes (most connected - your core abstractions)
 1. `Feed()` - 22 edges
 2. `base()` - 13 edges
-3. `VideoCard()` - 11 edges
-4. `Profile()` - 10 edges
+3. `Profile()` - 10 edges
+4. `VideoCard()` - 10 edges
 5. `speak()` - 9 edges
 6. `Check()` - 8 edges
 7. `steps` - 8 edges
-8. `Flame()` - 6 edges
-9. `Volume()` - 6 edges
-10. `VibeMode` - 6 edges
+8. `preloadSpeech()` - 6 edges
+9. `VibeMode` - 6 edges
+10. `Flame()` - 6 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Feed()` --calls--> `AdBreak()`  [EXTRACTED]

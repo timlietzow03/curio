@@ -165,17 +165,24 @@ export function unlockSpeech() {
   if (typeof window === 'undefined') return;
   const audio = getAudioElement();
   if (audio) {
-    audio.muted = true;
-    audio.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
-    audio
-      .play()
-      .then(() => {
-        audio.pause();
-        audio.muted = false;
-      })
-      .catch(() => {
-        audio.muted = false;
-      });
+    // Only prime if nothing is currently playing
+    if (audio.paused && !audio.src) {
+      audio.muted = true;
+      audio.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
+      audio
+        .play()
+        .then(() => {
+          if (audio.src.startsWith('data:audio/wav')) {
+            audio.pause();
+            audio.muted = false;
+          }
+        })
+        .catch(() => {
+          audio.muted = false;
+        });
+    } else {
+      audio.muted = false;
+    }
   }
   if ('speechSynthesis' in window) {
     const u = new SpeechSynthesisUtterance(' ');
